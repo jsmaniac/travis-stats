@@ -1,7 +1,7 @@
 function renderBuildCounts(container, data) {
 	var valueLabelWidth = 40; // space reserved for value labels (right)
 	var barHeight = 20; // height of one bar
-	var barLabelWidth = 130; // space reserved for bar labels
+	var barLabelWidth = 160; // space reserved for bar labels
 	var barLabelPadding = 5; // padding between bar and bar labels (left)
 	var gridLabelHeight = 18; // space reserved for gridline labels
 	var gridChartOffset = 3; // space between start of grid and first bar
