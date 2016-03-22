@@ -181,7 +181,7 @@ function updateChart() {
 				curOldestBuild = buildNr;
 			}
 
-			if (build.branch !== 'master' || build.state !== 'finished') {
+			if (/*build.branch !== 'master' ||*/ build.state !== 'finished') {
 				return;
 			}
 
