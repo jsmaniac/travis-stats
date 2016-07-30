@@ -8,9 +8,15 @@
 <body>
 	<h1>Travis CI build stats</h1>
 	<form>
-		<label>Repository:</label>
+		<label for="repo-name">Repository:</label>
 		<input id="repo-name" type="text" placeholder="owner/repo" />
 		<input class="button" type="submit" value="Render" />
+		<br />
+		<input id="include-failed" type="checkbox" checked="checked" />
+		<label for="include-failed">Include failed builds</label>
+		<br />
+		<input id="only-master" type="checkbox" />
+		<label for="only-master">Only master branch</label>
 	</form>
 
 	<div class="column">

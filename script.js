@@ -140,6 +140,8 @@ function getBuildDate(build) {
 
 function updateChart() {
 	var repoName = document.getElementById('repo-name').value;
+	var includeFailed = document.getElementById('include-failed').checked;
+	var onlyMaster = document.getElementById('only-master').checked;
 
 	// need at least "a/a"
 	if (repoName.length < 3) {
@@ -148,7 +150,7 @@ function updateChart() {
 
 	var baseUrl = 'https://travis-ci.org/' + repoName + '/builds/';
 
-	var buildsUrl = 'https://api.travis-ci.org/repos/' + repoName + '/builds?event_type=push';
+	var buildsUrl = 'https://api.travis-ci.org/repos/' + repoName + '/builds'; // ?event_type=push';
 
 	var builds = [];
 
@@ -181,7 +183,10 @@ function updateChart() {
 				curOldestBuild = buildNr;
 			}
 
-			if (/*build.branch !== 'master' ||*/ build.state !== 'finished') {
+			if ((onlyMaster && build.branch !== 'master')
+			    || (build.state !== 'finished')
+			    || (!includeFailed && build.result !== 0)
+			    || (build.event_type != "push" && build.event_type != "cron")) {
 				return;
 			}
 
