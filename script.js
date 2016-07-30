@@ -150,7 +150,7 @@ function updateChart() {
 
 	var baseUrl = 'https://travis-ci.org/' + repoName + '/builds/';
 
-	var buildsUrl = 'https://api.travis-ci.org/repos/' + repoName + '/builds'; // ?event_type=push';
+	var buildsUrl = 'https://api.travis-ci.org/repos/' + repoName + '/builds?'; // event_type=push';
 
 	var builds = [];
 
