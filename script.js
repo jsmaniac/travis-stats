@@ -188,22 +188,20 @@ function updateChart() {
 	}
 
 	function filterBuilds(json) {
-		var rawBuilds = json.builds;
-		if(console){globall=rawBuilds;console.log(rawBuilds);}
-		if (typeof rawBuilds.length === 'undefined') {
+		if (typeof json.builds.length === 'undefined') {
 			alert('invalid repository: ' + repoName);
 			return;
 		}
 
 		var curOldestBuild = oldestBuild;
 
-		rawBuilds.forEach(function(build) {
+		json.builds.forEach(function(build, idx) {
 			var buildNr = Number(build.number);
 			if (buildNr < curOldestBuild) {
 				curOldestBuild = buildNr;
 			}
 
-			if ((onlyMaster && build.branch !== 'master')
+			if ((onlyMaster && json.commits[idx].branch !== 'master')
 			    || (build.state !== 'finished')
 			    || (!includeFailed && build.result !== 0)
 			    || (build.event_type != "push" && build.event_type != "cron")) {
