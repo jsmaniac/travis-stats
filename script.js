@@ -188,6 +188,7 @@ function updateChart() {
 	}
 
 	function filterBuilds(json) {
+		globall = json;
 		if (typeof json.builds.length === 'undefined') {
 			alert('invalid repository: ' + repoName);
 			return;
