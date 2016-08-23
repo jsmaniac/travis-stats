@@ -1,4 +1,4 @@
-xfunction renderBuildCounts(container, data) {
+function renderBuildCounts(container, data) {
 	var valueLabelWidth = 40; // space reserved for value labels (right)
 	var barHeight = 20; // height of one bar
 	var barLabelWidth = 160; // space reserved for bar labels
