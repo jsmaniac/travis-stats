@@ -203,15 +203,10 @@ function updateChart() {
 				curOldestBuild = buildNr;
 			}
 
-			if (console)
-			{
-				console.log(json.commits[idx].branch, build.finished_at, build.state, build.event_type);
-			}
 			if ((onlyMaster && json.commits[idx].branch !== 'master')
-			    || (build.finished_at !== null)
+			    || (build.finished_at == null)
 			    || (!includeFailed && build.state !== 'passed')
 			    || (build.event_type != "push" && build.event_type != "cron")) {
-				if (console) console.log("return");
 				return;
 			}
 
@@ -220,6 +215,7 @@ function updateChart() {
 		});
 
 		function getDuration(build) {
+			console.log("duration:", build.duration/60);
 			return build.duration/60;
 		}
 
