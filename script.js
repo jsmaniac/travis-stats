@@ -138,6 +138,14 @@ function getBuildDate(build) {
 	return dt.toDateString();
 }
 
+function getJSON(url, callback) {
+    return d3.request(url)
+	.mimeType("application/json")
+	.header("Accept", "application/vnd.travis-ci.2+json")
+	.response(function(xhr) { return JSON.parse(xhr.responseText); })
+	.get(callback);
+}
+
 function updateChart() {
 	var repoName = document.getElementById('repo-name').value;
 	var includeFailed = document.getElementById('include-failed').checked;
@@ -211,11 +219,11 @@ function updateChart() {
 
 		if (++i < n && curOldestBuild < oldestBuild) {
 			oldestBuild = curOldestBuild;
-			d3.json(buildsUrl + '&after_number=' + oldestBuild, filterBuilds);
+			getJSON(buildsUrl + '&after_number=' + oldestBuild, filterBuilds);
 		}
 	}
 
-	d3.json(buildsUrl, filterBuilds);
+	getJSON(buildsUrl, filterBuilds);
 }
 
 function updateInputViaHash() {
