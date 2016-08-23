@@ -188,8 +188,6 @@ function updateChart() {
 	}
 
 	function filterBuilds(json) {
-		globall = json;
-		console.log(json);
 		if (typeof json.builds.length === 'undefined') {
 			alert('invalid repository: ' + repoName);
 			return;
@@ -227,6 +225,8 @@ function updateChart() {
 
 		renderBuildTimes('#build-times-duration', getDuration, builds, baseUrl);
 		renderBuildTimes('#build-times', getClockTime, builds, baseUrl);
+		// renderBuildTimes('#build-shortest-job', getShortest, builds, baseUrl);
+		// renderBuildTimes('#build-longest-job', getLongest, builds, baseUrl);
 		renderBuildCounts('#build-counts', d3.entries(buildCounts), baseUrl);
 
 		if (++i < n && curOldestBuild < oldestBuild) {
