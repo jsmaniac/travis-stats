@@ -139,11 +139,21 @@ function getBuildDate(build) {
 }
 
 function getJSON(url, callback) {
-    return d3.xhr(url)
-	.header("Accept", "application/vnd.travis-ci.2+json")
-	// .mimeType("application/json")
-	.response(function(xhr) { return JSON.parse(xhr.responseText); })
-	.get(callback);
+    return d3.xhr(
+	url,
+	"application/vnd.travis-ci.2+json",
+	function(xhr) {
+	    if (xhr.readyState==4 && xhr.status==200) {
+		callback(JSON.parse(xhr.responseText));
+	    }
+	}
+    );
+    // With d3 4.0:
+    //return d3.request(url)
+    //    //.mimeType("application/json")
+    //    .header("Accept", "application/vnd.travis-ci.2+json")
+    //    .response(function(xhr) { return JSON.parse(xhr.responseText); })
+    //    .get(callback);
 }
 
 function updateChart() {
