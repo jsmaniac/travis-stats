@@ -140,8 +140,8 @@ function getBuildDate(build) {
 
 function getJSON(url, callback) {
     return d3.xhr(url)
-	.mimeType("application/json")
 	.header("Accept", "application/vnd.travis-ci.2+json")
+	.mimeType("application/json")
 	.response(function(xhr) { return JSON.parse(xhr.responseText); })
 	.get(callback);
 }
