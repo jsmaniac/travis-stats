@@ -1,4 +1,4 @@
-function renderBuildCounts(container, data) {
+xfunction renderBuildCounts(container, data) {
 	var valueLabelWidth = 40; // space reserved for value labels (right)
 	var barHeight = 20; // height of one bar
 	var barLabelWidth = 160; // space reserved for bar labels
@@ -189,6 +189,7 @@ function updateChart() {
 
 	function filterBuilds(json) {
 		var rawBuilds = json.builds;
+		if(console){globall=rawBuilds;console.log(rawBuilds);}
 		if (typeof rawBuilds.length === 'undefined') {
 			alert('invalid repository: ' + repoName);
 			return;
