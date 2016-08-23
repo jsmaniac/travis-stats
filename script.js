@@ -126,7 +126,7 @@ function renderBuildTimes(container, barValue, data, baseUrl) {
 		.attr('stroke', 'white')
 		.attr('class', 'build-time-bar')
 		.attr('fill', function(d) {
-			return d.result === 0 ? '#038035' : '#CC0000';
+			return d.state === 'passed' ? '#038035' : '#CC0000';
 		})
 		.on('click', function(d) {
 			window.open(baseUrl + d.id);
@@ -215,7 +215,6 @@ function updateChart() {
 		});
 
 		function getDuration(build) {
-			console.log("duration:", build.duration/60);
 			return build.duration/60;
 		}
 
