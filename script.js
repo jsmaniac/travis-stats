@@ -201,6 +201,10 @@ function updateChart() {
 				curOldestBuild = buildNr;
 			}
 
+			if (console)
+			{
+				console.log(json.commits[idx].branch, build.state, build.result, build.event_type);
+			}
 			if ((onlyMaster && json.commits[idx].branch !== 'master')
 			    || (build.state !== 'finished')
 			    || (!includeFailed && build.result !== 0)
