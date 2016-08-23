@@ -208,8 +208,8 @@ function updateChart() {
 				console.log(json.commits[idx].branch, build.state, build.result, build.event_type);
 			}
 			if ((onlyMaster && json.commits[idx].branch !== 'master')
-			    || (build.state !== 'finished')
-			    || (!includeFailed && build.result !== 0)
+			    || (build.finished_at !== null)
+			    || (!includeFailed && build.state !== 'passed')
 			    || (build.event_type != "push" && build.event_type != "cron")) {
 				return;
 			}
