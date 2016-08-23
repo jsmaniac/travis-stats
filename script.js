@@ -187,7 +187,8 @@ function updateChart() {
 		}
 	}
 
-	function filterBuilds(rawBuilds) {
+	function filterBuilds(json) {
+		var rawBuilds = json.builds;
 		if (typeof rawBuilds.length === 'undefined') {
 			alert('invalid repository: ' + repoName);
 			return;
