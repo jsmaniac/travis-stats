@@ -205,12 +205,13 @@ function updateChart() {
 
 			if (console)
 			{
-				console.log(json.commits[idx].branch, build.state, build.result, build.event_type);
+				console.log(json.commits[idx].branch, build.finished_at, build.state, build.event_type);
 			}
 			if ((onlyMaster && json.commits[idx].branch !== 'master')
 			    || (build.finished_at !== null)
 			    || (!includeFailed && build.state !== 'passed')
 			    || (build.event_type != "push" && build.event_type != "cron")) {
+				if (console) console.log("return");
 				return;
 			}
 
